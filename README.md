@@ -22,7 +22,6 @@ nextjs-docker-app/                  ← Root โปรเจกต์
 2. รันคำสั่ง:
 
 ```Bash
-docker compose pull     # ดึง image จาก Docker Hub
 docker compose up -d    # รันใน background
 ```
 
