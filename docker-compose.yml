@@ -1,18 +1,22 @@
-version: '3.9'
+# ในเครื่องเรา
 
 services:
   app:
-    image: warapetchrpvs/nextjs-16.2-app:latest
-    container_name: nextjs-app
+    build: .
+    container_name: nextjs-dev
     restart: unless-stopped
     ports:
       - "3000:3000"
-      
     environment:
-      - NODE_ENV=production
-      
-    # ถ้าต้องการ mount โค้ดสำหรับ development (optional)
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - WATCHPACK_POLLING_INTERVAL=1000
+      - CHOKIDAR_USEPOLLING=true
+      - NEXT_TELEMETRY_DISABLED=1
     volumes:
       - .:/app
-      
-      
+      - /app/node_modules
+
+    command: npm run dev
+    stdin_open: true
+    tty: true
